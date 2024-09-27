@@ -13,7 +13,7 @@ interface Props {
   status: boolean;
 }
 
-const SearchList = ({ searchData, status }: Props) => {
+const SearchList = ({ searchData = [], status }: Props) => {
   return (
     <div className="max-h-[70vh] overflow-auto">
       {status ? (

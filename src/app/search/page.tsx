@@ -14,7 +14,7 @@ interface Props {
 const Search = async ({ searchParams }: Props) => {
   const { limit, order, sortBy, q } = searchParams;
   const endpoint = `https://dummyjson.com/products/search?limit=${limit}&order=${order}&sortBy=${sortBy}&q=${q}`;
-  const { products: queryProduct } = await getData(endpoint);
+  const { products: queryProduct = [] } = await getData(endpoint);
   return (
     <>
       {queryProduct.length > 0 ? (

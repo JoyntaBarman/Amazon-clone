@@ -3,8 +3,11 @@ import React from "react";
 import Container from "../Container";
 import AllMenuIcon from "./AllMenuIcon";
 import { getData } from "@/helper";
+import { getServerSession } from "next-auth";
 
-const Navbar =async () => {
+const Navbar = async () => {
+
+  const user = await getServerSession();
 
   const navlink = [
     {
@@ -29,14 +32,16 @@ const Navbar =async () => {
     },
   ];
 
-  const categories =  await getData('https://dummyjson.com/products/category-list');
+  const categories = await getData(
+    "https://dummyjson.com/products/category-list"
+  );
 
   return (
     <div className="bg-secondary ">
       <Container className="py-1">
         <div className="text-white font-medium ">
           <ul className="flex justify-between lg:justify-start items-center gap-2 flex-wrap">
-            <AllMenuIcon categories={categories}/>
+            <AllMenuIcon categories={categories} />
             {navlink.map((item) => (
               <li
                 key={item?.title}
@@ -50,9 +55,11 @@ const Navbar =async () => {
                 </Link>
               </li>
             ))}
-            <li className="font-bold text-yellow tracking-wider underline">
-              please signin to access your cart!
-            </li>
+            {!user && (
+              <li className="font-bold text-yellow tracking-wider underline">
+                please signin to access your cart!
+              </li>
+            )}
           </ul>
         </div>
       </Container>

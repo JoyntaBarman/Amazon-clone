@@ -11,12 +11,7 @@ const HiddenMenuItems = ({categories}: Props) => {
 
   return (
     <div className="">
-      {/* Sign in */}
-      <div className="bg-secondary py-2 w-full">
-        <div className="flex justify-center items-center gap-2 text-white">
-          <ProfileMenu />
-        </div>
-      </div>
+      
       {/* Links */}
       <div className="text-primary capitalize py-10">
         <h3 className="text-2xl font-bold underline text-center">Category</h3>

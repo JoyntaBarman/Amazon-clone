@@ -1,5 +1,8 @@
+import { error } from "console";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { signIn, signOut } from "next-auth/react";
+import { redirect } from "next/dist/server/api-utils";
 
 
  const authOptions = {
@@ -16,10 +19,13 @@ import GoogleProvider from "next-auth/providers/google";
       },
     }),
   ],
-  pages: {
-    signIn: '/signin'
-  }
-  // secret: process.env.NEXTAUTH_SECRET,
+  
+  callbacks: {
+    async redirect(){
+      return '/';
+    }
+  },
+  secret: process.env.NEXTAUTH_SECRET,
   
 };
 

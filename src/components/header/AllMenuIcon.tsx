@@ -5,6 +5,7 @@ import { IoMenuOutline } from "react-icons/io5";
 import { MdClose } from "react-icons/md";
 import { motion } from "framer-motion";
 import HiddenMenuItems from "./HiddenMenuItems";
+import ProfileMenu from "./ProfileMenu";
 
 interface Props {
   categories: string[];
@@ -37,17 +38,17 @@ const AllMenuIcon = ({ categories }: Props) => {
   }, []);
   return (
     <AnimatePresence>
-        <li  className=" border border-secondary hover:border-white/90 duration-200">
+      <li className=" border border-secondary hover:border-white/90 duration-200">
         {/* MENU BUTTON */}
-          <button
-            onClick={() => setShowMenu((prev) => !prev)}
-            className="p-1 flex items-center gap-2 text-white"
-          >
-            <span>
-              <IoMenuOutline size={24} />
-            </span>
-            All
-          </button>
+        <button
+          onClick={() => setShowMenu((prev) => !prev)}
+          className="p-1 flex items-center gap-2 text-white"
+        >
+          <span>
+            <IoMenuOutline size={24} />
+          </span>
+          All
+        </button>
         {showMenu && (
           <motion.div
             ref={divRef}
@@ -70,6 +71,11 @@ const AllMenuIcon = ({ categories }: Props) => {
               >
                 <MdClose size={32} />
               </button>
+              <div onClick={() => setShowMenu((prev) => !prev)} className="bg-secondary py-2 w-full">
+                <div className="flex justify-center items-center gap-2 text-white">
+                  <ProfileMenu />
+                </div>
+              </div>
               <div className="overflow-auto w-full h-full">
                 <div ref={hiddenMenuRef}>
                   <HiddenMenuItems categories={categories} />
@@ -78,8 +84,8 @@ const AllMenuIcon = ({ categories }: Props) => {
             </motion.div>
           </motion.div>
         )}
-    </li>
-      </AnimatePresence>
+      </li>
+    </AnimatePresence>
   );
 };
 

@@ -39,7 +39,13 @@ const Checkout = ({ cart }: Props) => {
       }),
     });
     const { url } = await response.json();
-    router.push(url);
+    if(url) {
+      router.push(url);
+    } else {
+      setLoadingSession(false);
+      alert('Server error!');
+    }
+
   };
 
   return (

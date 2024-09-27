@@ -7,7 +7,7 @@ const checkConfig = (env: string): Config | {} => {
   switch (env) {
     case "production":
       config = {
-        baseUrl: "https:",
+        baseUrl: "https://amazon-clone-three-chi-61.vercel.app/",
       };
       break;
     case "local":
@@ -22,5 +22,5 @@ const checkConfig = (env: string): Config | {} => {
   return config;
 };
 
-const selectServer = 'local'
+const selectServer = 'production'
 export const config = checkConfig(selectServer) as Config;
